@@ -1,12 +1,30 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "../../assets/scss/responsive.scss";
 import "../../assets/scss/style.scss";
 import {Button, Image} from "react-bootstrap";
 
 export function Header(props) {
+    const [position, setPosition] = useState(0);
+
+    useEffect(() => {
+        window.addEventListener('scroll', listenToScroll)
+    }, []);
+
+    const listenToScroll = () => {
+        const winScroll =
+            document.body.scrollTop || document.documentElement.scrollTop;
+
+        const height =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+
+        const scrolled = winScroll / height;
+
+        setPosition(scrolled);
+    };
 
     return(
-        <div className="header-line-wrapper">
+        <div id="header-sticky" className={"header-line-wrapper" + ((position > 0.2) ? " affix-top" : "")}>
         <header className="header-wrapper fixed-top plr100">
             <div className="table height-100p">
                 <div className="table-row">
