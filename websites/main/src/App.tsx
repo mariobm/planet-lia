@@ -1,15 +1,17 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 import {Placeholder} from "./placeholder/Placeholder";
 import Main from './Main';
 
 const App: React.FC = () => {
   return (
     <div>
-        {process.env.REACT_APP_ONLINE_EDITOR === "true"
+      <BrowserRouter>
+      {process.env.REACT_APP_ONLINE_EDITOR === "true"
             ? <Main/>
             : <Placeholder/>
         }
+      </BrowserRouter>
     </div>
   );
 };

@@ -41,96 +41,27 @@ export function Header(props) {
                             <ul className="menu clearfix">
                                 <li className="inline-block active">
                                     <a href="index.html">
-                                        Homepage
-                                    </a>
-                                </li>
-                                <li className="inline-block menu-item-has-children">
-                                    <a href="#">
-                                        Pages
-                                    </a>
-                                    <ul className="sub-menu">
-                                        <li>
-                                            <a href="about.html">About</a>
-                                        </li>
-                                        <li>
-                                            <a href="404.html">404</a>
-                                        </li>
-                                        <li>
-                                            <a href="faq.html">FAQ</a>
-                                        </li>
-                                        <li className="menu-item-has-children">
-                                            <a href="team.html">Team</a>
-                                            <ul className="sub-menu">
-                                                <li>
-                                                    <a href="single-team.html">Member profile</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="typography.html">Typography</a>
-                                        </li>
-                                        <li>
-                                            <a href="price.html">Pricing plans</a>
-                                        </li>
-                                        <li>
-                                            <a href="testimonials.html">Testimonials</a>
-                                        </li>
-										<li>
-                                            <a href="statistic.html">Statistic</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="inline-block menu-item-has-children">
-                                    <a href="#">
-                                        Gallery
-                                    </a>
-                                    <ul className="sub-menu">
-                                        <li>
-                                            <a href="gallery-regular.html">Gallery Regular</a>
-                                        </li>
-                                        <li>
-                                            <a href="gallery-masonry.html">Gallery Masonry</a>
-                                        </li>
-                                        <li>
-                                            <a href="gallery-full.html">Gallery Fullwidth</a>
-                                        </li>
-                                        <li>
-                                            <a href="gallery-extended.html">Gallery Extended</a>
-                                        </li>
-                                        <li>
-                                            <a href="single-image.html">Single image</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="inline-block menu-item-has-children">
-                                    <a href="games.html">
                                         Games
                                     </a>
-                                    <ul className="sub-menu">
-                                        <li>
-                                            <a href="single-game.html">Single game</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="inline-block menu-item-has-children">
-                                    <a href="#">
-                                        Blog
-                                    </a>
-                                    <ul className="sub-menu">
-                                        <li>
-                                            <a href="blog-full.html">Blog Fullwidth</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-left.html">Blog Left sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-right.html">Blog Right sidebar</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li className="inline-block">
-                                    <a href="contacts.html">
-                                        Contacts
+                                    <a href="index.html">
+                                        Tournaments
+                                    </a>
+                                </li>
+                                <li className="inline-block">
+                                    <a href="index.html">
+                                        Community
+                                    </a>
+                                </li>
+                                <li className="inline-block">
+                                    <a href="index.html">
+                                        Contribute
+                                    </a>
+                                </li>
+                                <li className="inline-block">
+                                    <a href="index.html">
+                                        About
                                     </a>
                                 </li>
                             </ul>

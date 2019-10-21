@@ -35,7 +35,7 @@ body {
     font-family: $font-roboto;
     font-size: 16px;
     font-weight: 300;
-    color: $color-2;
+    color: $main-background;
     background-color: $color-3;
 
     .loader-wrapper {
@@ -2896,4 +2896,258 @@ footer {
         padding-left: 10px;
         padding-right: 10px;
     }
+}
+
+/* Custom CSS */
+.custom-btn {
+    border-radius: 0!important;
+    line-height: 20px;
+}
+
+.editor-btn-bot {
+    margin-left: 10px;
+}
+
+.editor-tabs {
+    margin-left: 15px;
+}
+
+.editor-tab-bot .nav-link.active {
+    color: $color-7 !important;
+    background-color: $main-background;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    filter: brightness(200%);
+    height: 42px;
+}
+
+.editor-tab-bot .nav-link {
+    border-radius: 0;
+    color: $color-white;
+    border: 0;
+}
+
+.editor-tab-bot .nav-link:focus, .nav-tabs .nav-link:hover {
+    border-color: inherit;
+}
+
+.btn-green {
+    background-color: #019170;
+    color: #eee;
+}
+
+/* Editor Page */
+.editor-cont-page {
+    width: 100%;
+    min-width: 768px;
+    min-height: calc(28.125vw + 2.7em - 4px + 43px + 8em);
+    background-color: #1e1e1e;
+    border-top: 1px solid #333;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+.editor-cont-page > div {
+    position: relative;
+    width: calc(50% - 1px);
+    border-bottom: 1px solid #333;
+
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+.editor-cont-page > #editor-left {
+    border-right: 1px solid #333;
+}
+
+.editor-cont-page > #editor-right {
+    border-left: 1px solid #333;
+}
+
+.editor-cont-page > div > div{
+    width: 100%;
+}
+
+.editor-cont-page > div > div:last-child {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+#editor-cont-ui {
+    border-bottom: 1px solid #333;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+.editor-cont-uielems {
+    margin: 5px 5px 5px 0;
+    align-self: center;
+}
+
+.editor-cont-uielems:first-child {
+    margin-left: 10px
+}
+
+/*
+#editor-lang > select {
+  width: 7.5em;
+  background-color: #494949;
+  color: #ddd;
+  border: 1px solid #555;
+}
+
+#editor-cont-links {
+  color: #666;
+}
+
+#editor-cont-links > div {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#editor-cont-links a {
+  position: relative;
+  top: 1px;
+  margin-right: 5px;
+}
+*/
+
+#editor-btn-reset {
+    text-align: right;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+#editor-cont-ui button {
+    width: $editor-btn-width;
+}
+
+#editor-btn-run {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.editor-cont-page > div > #cont-editor {
+    width: 100%;
+    position: absolute;
+    top: 43px;
+    bottom: 24px;
+    border-bottom: 1px solid #333;
+}
+
+#cont-editor > #editor-block {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#cont-editor #cont-lang-select {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    color: #eee;
+
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+#cont-editor #cont-lang-select > p:first-child {
+    margin-bottom: 40px
+}
+
+#cont-editor #cont-lang-select > p:last-child {
+    margin-top: 40px
+}
+
+#cont-editor #cont-lang-select > button {
+    min-width: 90px;
+    margin: 0 10px 10px 0;
+}
+
+#cont-editor > #lang-select > #cont-lang-btns > button:last-child {
+    margin-right: 0;
+}
+
+#editor-notification {
+    text-align: center;
+    padding: 11px;
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+    color: #666;
+}
+
+#editor-cont-replay {
+    position: relative;
+    height: calc(28.125vw + 2.7em - 4px);
+}
+
+#editor-loader-overlay {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255,255,255,0.1);
+}
+
+#editor-cont-log {
+    top: calc(28.125vw + 2.7em - 4px + 43px);
+    border-top: 1px solid #333;
+}
+
+#editor-cont-log > textarea {
+    width: 100%;
+    height: 100%;
+}
+
+/* Editor Page Overwrites*/
+
+.form-control.editor-input {
+    color: #666;
+    background-color: #1e1e1e;
+    border: none;
+    border-radius: 0;
+}
+
+@media screen and (max-width: 767.98px) {
+    .editor-main-cont > .cont-fullpage {
+        height: calc(100vh - 50px - 0.6em - 1.8px - 19px);  /*19px for scrollbar*/
+    }
+
+    .editor-cont-page {
+        min-height: calc(15.42em + 2.7em - 4px + 43px + 8em);  /* minwidth * half of 16:9, 768 * 0.28125 */
+    }
+
+    .editor-cont-page > div {
+        margin-bottom: 19px
+    }
+
+    #editor-cont-log {
+        top: calc(15.42em + 2.7em - 4px + 43px);  /* minwidth * half of 16:9, 768 * 0.28125 */
+    }
+}
+.main-content {
+    padding-top: $header-height;
 }

@@ -1,12 +1,14 @@
 import * as React from "react";
 import {Component} from "react";
-import "./style.css";
 import {Image} from "react-bootstrap";
 
 interface Props {}
 interface State {}
 
 export class Placeholder extends Component<Props, State> {
+    componentDidMount(): void {
+        require('./style.css');
+    }
 
     render() {
         return (
