@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ApolloProvider } from 'react-apollo';
-import ApolloClient from 'apollo-boost';
+import ApolloClient, {HttpLink} from 'apollo-boost';
 
 const client = new ApolloClient({
     uri: 'https://api.production.cloud.planetlia.com/'

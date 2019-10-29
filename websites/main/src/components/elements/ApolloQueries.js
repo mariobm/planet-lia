@@ -5,7 +5,7 @@ export const UPLOAD_BOTS = gql`
         onlineEditorSubmit(game: $game,
             bots:[{
                 language: $firstBot,
-                source: $firstCode
+                source: $firstCodex
             },
                 {
                     language: $secondBot,

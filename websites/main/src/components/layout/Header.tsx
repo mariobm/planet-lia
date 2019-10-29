@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import logo from "../../assets/images/logo.png";
 import "../../assets/scss/responsive.scss";
 import "../../assets/scss/style.scss";
 import {Button, Image} from "react-bootstrap";
@@ -30,7 +31,7 @@ export function Header(props) {
                 <div className="table-row">
                     <div className="table-cell valign-middle text-left">
                         <a href="index.html" className="logo">
-                            <Image src="assets/images/logo.png" className="img-responsive inline-block"/>
+                            <Image src={logo} className="img-responsive inline-block"/>
                         </a>
                     </div>
                     <div className="table-cell valign-top text-center vm-sm">

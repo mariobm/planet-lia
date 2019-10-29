@@ -2898,7 +2898,9 @@ footer {
     }
 }
 
-/* Custom CSS */
+/*
+** Custom CSS **
+*/
 .custom-btn {
     border-radius: 0!important;
     line-height: 20px;
@@ -2931,6 +2933,7 @@ footer {
 
 .editor-tab-bot .nav-link:focus, .nav-tabs .nav-link:hover {
     border-color: inherit;
+    color: $color-7;
 }
 
 .btn-green {

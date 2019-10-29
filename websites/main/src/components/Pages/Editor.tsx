@@ -4,11 +4,8 @@ import MonacoEditor from 'react-monaco-editor';
 import Loader from 'react-loader-spinner'
 import Cookies from 'universal-cookie';
 import { Mutation } from '@apollo/react-components';
-import { Query } from '@apollo/react-components';
-import { gql } from 'apollo-boost';
-/*
-import axios from "axios";
-import ReactResizeDetector from 'react-resize-detector';*/
+
+import ReactResizeDetector from 'react-resize-detector';
 import {UPLOAD_BOTS} from '../elements/ApolloQueries';
 import Replay from '../elements/Replay';
 import Popup from '../views/Popup';
@@ -208,16 +205,16 @@ class Editor extends Component<EditorProps,EditorState> {
             });
     };
 
-    generateGame = async () => {
-        const { lastPlay, currentLang, isNoLanguageSetBot } = this.state;
+    generateGame = () => {
+        const { lastPlay, currentLang, isNoLanguageSetBot, codeFirstBot, codeSecondBot } = this.state;
         const currentTime = new Date();
         const delayMiliSec = 15000;
 
-        if(isNoLanguageSetBot) {
+        if(isNoLanguageSetBot[0] || isNoLanguageSetBot[1]) {
             this.setState({
-                error: "No programming language was choosen."
+                error: "No language was chosen."
             });
-            console.error("No programming language was choosen.");
+            console.error("No language was chosen.");
             return false;
         }
 
@@ -235,13 +232,15 @@ class Editor extends Component<EditorProps,EditorState> {
             gameKey: this.state.gameKey + 1,
         });
 
-        // Set if tracking is enabled
+        return [currentLang, codeFirstBot, codeSecondBot];
+
+        /* Set if tracking is enabled
         const cookies = new Cookies();
         let isTrackingOn = cookies.get('editor-tracking') !== "false";
 
         console.log(isTrackingOn + "  " + cookies.get('editor-tracking'));
 
-        // Generate replay
+         Generate replay
         const response = await fetch('https://editor.cloud1.liagame.com/generate?tracking=' + isTrackingOn, {
             method: 'POST',
             headers: {
@@ -255,8 +254,8 @@ class Editor extends Component<EditorProps,EditorState> {
         const json = await response.json();
 
         // TODO handle if there is an error!
-        let trackingId = json['trackingId'];
-
+        let trackingId = json['trackingId'];*/
+/*
         // Fetch results
         for (let i = 0; i < 180; i++) {
             const response = await fetch('https://editor.cloud1.liagame.com/results/' + trackingId, {
@@ -291,6 +290,7 @@ class Editor extends Component<EditorProps,EditorState> {
             error: "Failed to fetch game results in time."
         })
         console.error("Failed to fetch game results in time.")
+        */
     };
 
     sleep = async (ms) => {
@@ -391,17 +391,24 @@ class Editor extends Component<EditorProps,EditorState> {
         };
 
         const code = botCodes[this.state.selectedBot];
+        const { gameName, codeSecondBot } = this.state;
         return (
             <div className="editor-main-cont cont-overflow">
                 <div className="cont-fullpage editor-cont-page">
                     <div id="editor-left">
-                        <Mutation mutation={UPLOAD_BOTS}>
-                            {(uploadBots) => (
+                        <Mutation mutation={UPLOAD_BOTS} variables={{
+                            game: gameName,
+                            firstBot: currentLang[0],
+                            firstCode: atob(botCodes[0]),
+                            secondBot: currentLang[1],
+                            secondCode: atob(botCodes[1])
+                        }}>
+                            {(onlineEditorSubmit) => (
                                 <div id="editor-cont-ui">
-                                    <Nav className="editor-tabs" variant="tabs" defaultActiveKey="#bot1"
+                                    <Nav className="editor-tabs" variant="tabs" defaultActiveKey="#firstBot"
                                          onSelect={handleSelect}>
                                         <Nav.Item className="editor-tab-bot">
-                                            <Nav.Link href="#bot1" eventKey="0">Bot 1</Nav.Link>
+                                            <Nav.Link href="#firstBot" eventKey="0">Bot 1</Nav.Link>
                                         </Nav.Item>
                                         <Nav.Item className="editor-tab-bot">
                                             <Nav.Link eventKey="1">Bot 2</Nav.Link>
@@ -420,7 +427,9 @@ class Editor extends Component<EditorProps,EditorState> {
                                         </Button>
                                     </div>
                                     <div id="editor-btn-run" className="editor-cont-uielems">
-                                        <Button className="btn-green custom-btn btn" onClick={() => this.generateGame()}
+                                        <Button className="btn-green custom-btn btn" onClick={() => {
+                                            onlineEditorSubmit();
+                                        }}
                                                 type="button"
                                                 disabled={generatingGame || isNoLanguageSetBot[selectedBot]}>
                                             <FontAwesomeIcon icon="play"/>
@@ -430,7 +439,7 @@ class Editor extends Component<EditorProps,EditorState> {
                                 </div>
                                 )}
                         </Mutation>
-                        {/*<ReactResizeDetector handleWidth handleHeight onResize={this.resizePlayer} />*/}
+                        <ReactResizeDetector handleWidth handleHeight onResize={this.resizePlayer} />
                                 <div id="cont-editor">
                                 <MonacoEditor
                                 width={editorW}
