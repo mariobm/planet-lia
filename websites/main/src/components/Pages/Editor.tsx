@@ -396,14 +396,8 @@ class Editor extends Component<EditorProps,EditorState> {
             <div className="editor-main-cont cont-overflow">
                 <div className="cont-fullpage editor-cont-page">
                     <div id="editor-left">
-                        <Mutation mutation={UPLOAD_BOTS} variables={{
-                            game: gameName,
-                            firstBot: currentLang[0],
-                            firstCode: atob(botCodes[0]),
-                            secondBot: currentLang[1],
-                            secondCode: atob(botCodes[1])
-                        }}>
-                            {(onlineEditorSubmit) => (
+                        <Mutation mutation={UPLOAD_BOTS}>
+                            {(onlineEditorSubmit, { data }) => (
                                 <div id="editor-cont-ui">
                                     <Nav className="editor-tabs" variant="tabs" defaultActiveKey="#firstBot"
                                          onSelect={handleSelect}>
@@ -428,7 +422,17 @@ class Editor extends Component<EditorProps,EditorState> {
                                     </div>
                                     <div id="editor-btn-run" className="editor-cont-uielems">
                                         <Button className="btn-green custom-btn btn" onClick={() => {
-                                            onlineEditorSubmit();
+                                            const firstCode = btoa(unescape(encodeURIComponent(botCodes[0])));
+                                            const secondCode = btoa(unescape(encodeURIComponent(botCodes[1])));
+                                            onlineEditorSubmit({
+                                                    variables: {
+                                                        game: gameName,
+                                                        firstBot: currentLang[0],
+                                                        firstCode: firstCode,
+                                                        secondBot: currentLang[1],
+                                                        secondCode: secondCode
+                                                    }
+                                            });
                                         }}
                                                 type="button"
                                                 disabled={generatingGame || isNoLanguageSetBot[selectedBot]}>
