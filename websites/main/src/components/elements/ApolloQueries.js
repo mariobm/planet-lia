@@ -1,11 +1,14 @@
 import { gql } from 'apollo-boost';
 
 export const UPLOAD_BOTS = gql`
-    mutation onlineEditorSubmit($game: String!, $firstBot: String!, $firstCode: String! $secondBot: String!, $secondCode: String!) {
+    type Language {
+        language: String!
+    }
+    mutation onlineEditorSubmit($game: String!, $firstBot: Language!, $firstCode: String!, $secondBot: Language!, $secondCode: String!) {
         onlineEditorSubmit(game: $game,
             bots:[{
                 language: $firstBot,
-                source: $firstCodex
+                source: $firstCode
             },
                 {
                     language: $secondBot,
